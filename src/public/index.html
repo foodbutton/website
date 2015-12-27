@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
-  <title>FoodButton.io</title>
+    <title>FoodButton.io</title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FoodButton">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FoodButton">
 
 
-  <!-- base url -->
-  <base href="/">
+    <!-- base url -->
+    <base href="/">
 
 </head>
+
 <body>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.26.min.js"></script>
+    <script type="text/javascript" src="aws-cognito-sync.min.js"></script>
+    <script>
+        AWS.config.region = 'us-east-1'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-1:5171085d-4117-4d63-8701-eb06637a7281',
+        });
+        AWS.config.credentials.get(function() {
+            var syncClient = new AWS.CognitoSyncManager();
+            syncClient.openOrCreateDataset('myDataset', function(err, dataset) {
+                dataset.put('myKey', 'myValue', function(err, record) {
+                    dataset.synchronize({
+                        onSuccess: function (data, newRecords) {
+                            console.log(data, newRecords)
+                        }
+                    })
+                })
+            })
+        })
+    </script>
 
-  <app>
-    Loading...
-  </app>
+    <app>
+        Loading...
+    </app>
 
-  <!-- Common files to be cached -->
-  <script src="/__build__/common.js"></script>
-  <!-- Vendor files -->
-  <script src="/__build__/vendor.js"></script>
-  <!-- App script -->
-  <script src="/__build__/app.js"></script>
+    <!-- Common files to be cached -->
+    <script src="/__build__/common.js"></script>
+    <!-- Vendor files -->
+    <script src="/__build__/vendor.js"></script>
+    <!-- App script -->
+    <script src="/__build__/app.js"></script>
 
 </body>
+
 </html>
