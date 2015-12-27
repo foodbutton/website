@@ -19,6 +19,25 @@
     Loading...
   </app>
 
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+  <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '1238491436164644',
+        xfbml      : true,
+        version    : 'v2.5'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <!-- Common files to be cached -->
   <script src="/__build__/common.js"></script>
   <!-- Vendor files -->
