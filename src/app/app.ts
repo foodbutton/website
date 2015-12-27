@@ -25,4 +25,6 @@ import {FORM_PROVIDERS} from 'angular2/common';
 })
 
 
-export class App {}
+export class App {
+    url: string = 'http://github.com/foodbutton';
+}

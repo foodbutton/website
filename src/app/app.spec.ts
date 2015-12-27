@@ -15,5 +15,8 @@ describe('App', () => {
     App
   ]);
 
+  it('should have a url', inject([ App ], (app) => {
+    expect(app.url).toEqual('http://github.com/foodbutton');
+  }));
 
 });
