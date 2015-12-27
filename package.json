@@ -27,7 +27,7 @@
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
     "lint": "tsconfig-lint",
-    "e2e": "protractor",
+    "e2e": "concurrent --kill-others \"npm run server\" \"protractor\"",
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
