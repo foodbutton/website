@@ -16,30 +16,13 @@
 </head>
 
 <body>
+    <script src="//cdn.auth0.com/js/lock-7.12.min.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.26.min.js"></script>
-    <script type="text/javascript" src="aws-cognito-sync.min.js"></script>
-    <script>
-        AWS.config.region = 'us-east-1'; // Region
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: 'us-east-1:5171085d-4117-4d63-8701-eb06637a7281',
-        });
-        AWS.config.credentials.get(function() {
-            var syncClient = new AWS.CognitoSyncManager();
-            syncClient.openOrCreateDataset('myDataset', function(err, dataset) {
-                dataset.put('myKey', 'myValue', function(err, record) {
-                    dataset.synchronize({
-                        onSuccess: function (data, newRecords) {
-                            console.log(data, newRecords)
-                        }
-                    })
-                })
-            })
-        })
-    </script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="bootstrap/aws-cognito-sync.min.js"></script>
 
-    <app>
-        Loading...
-    </app>
+
+    <app></app>
 
     <!-- Common files to be cached -->
     <script src="/__build__/common.js"></script>
