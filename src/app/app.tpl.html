@@ -1,0 +1,26 @@
+<md-toolbar class="fixed-toolbar
+            md-whitefame-z1"
+            md-peakaboo [break]="190"
+            breakAction="show">
+    <div class="md-toolbar-tools">
+        <span>FoodButton</span>
+    </div>
+</md-toolbar>
+<md-content>
+    <h3 class="md-title">Login</h3>
+    <button md-button
+            *ngIf="!loggedIn()"
+            (click)="login()">
+      Login
+    </button>
+    <button md-button
+            *ngIf="loggedIn()"
+            (click)="logout()">
+      Logout
+    </button>
+    <button md-button
+            (click)="getSecretThing()">
+      Get Secret
+    </button>
+</md-content>
+<router-outlet></router-outlet>

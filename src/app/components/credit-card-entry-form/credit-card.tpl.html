@@ -1,0 +1,66 @@
+<md-content flex layout-padding>
+    <div class="inset">
+        <div layout="row">
+            <h3 class="md-title">
+                Enter your Credit Card Information
+            </h3>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Number</label>
+                <input name="number" [(ngModel)]="model.cardNumber" type="text" required />
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Expiration Month</label>
+                <input name="month" [(ngModel)]="model.cardExpMonth" type="text" required />
+            </md-input-container>
+            <md-input-container class="md-block " flex-gt-sm>
+                <label>Expiration Year</label>
+                <input name="year" [(ngModel)]="model.cardExpYear" type="text" required />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>CVC</label>
+                <input name="cvc" [(ngModel)]="model.cardExpMonth" type="text" required />
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <h3 class="md-title">
+                Enter Your Billing Details
+            </h3>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Name</label>
+                <input name="name" [(ngModel)]="model.cardName" type="text" />
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Address 1</label>
+                <input name="address1" [(ngModel)]="model.cardAddress1" type="text" />
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Address 2</label>
+                <input name="address2" [(ngModel)]="model.cardAddress2" type="text" />
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>City</label>
+                <input name="acity" [(ngModel)]="model.cardCity" type="text" />
+            </md-input-container>
+            <md-input-container class="md-block" flex>
+                <label>State</label>
+                <input name="state" [(ngModel)]="model.cardState" type="text" />
+            </md-input-container>
+            <md-input-container class="md-block" flex>
+                <label>Zip</label>
+                <input name="zip" [(ngModel)]="model.cardZip" type="text" />
+            </md-input-container>
+        </div>
+    </div>
+</md-content>
