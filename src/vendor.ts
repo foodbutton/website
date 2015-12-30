@@ -12,3 +12,5 @@ import 'angular2/http';
 import 'rxjs';
 
 // Other vendors for example jQuery or Lodash
+import 'ng2-material/source/all';
+import 'angular2-jwt';
