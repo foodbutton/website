@@ -7,6 +7,7 @@ var path = require('path');
 var webpack = require('webpack');
 // Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 /*
  * Config
@@ -23,7 +24,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('__build__'),
+    path: root('./build/scripts'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
@@ -70,7 +71,6 @@ module.exports = {
   plugins: [
     new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
     new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
-   // include uglify in production
   ],
 
   sassLoader: {
@@ -85,8 +85,8 @@ module.exports = {
   // our Webpack Development Server config
   devServer: {
     historyApiFallback: true,
-    contentBase: 'src/public',
-    publicPath: '/__build__'
+    contentBase: 'build',
+    publicPath: './build'
   }
 };
 
