@@ -35,7 +35,7 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
+    // preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
     loaders: [
       // Support for .ts files.
       {
@@ -56,7 +56,10 @@ module.exports = {
       { test: /\.json$/,  loader: 'json-loader' },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      {
+          test: /\.scss$/,
+          loaders:['style', 'css', 'sass']
+       },
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader' },
@@ -70,11 +73,15 @@ module.exports = {
    // include uglify in production
   ],
 
-  // Other module loader config
-  tslint: {
-    emitErrors: false,
-    failOnHint: false
+  sassLoader: {
+      includePaths: [path.resolve(__dirname, 'node_modules/ng2-material/source')]
   },
+
+  // Other module loader config
+//   tslint: {
+//     emitErrors: false,
+//     failOnHint: false
+//   },
   // our Webpack Development Server config
   devServer: {
     historyApiFallback: true,
