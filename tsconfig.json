@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmitHelpers": false,
+    "sourceMap": true
+  },
+  "files": [
+    "typings/main.d.ts",
+    "test/injector.spec.ts",
+    "test/sanity-test.spec.ts",
+    "src/app/app.spec.ts",
+    "src/app/app.ts",
+    "src/bootstrap.ts",
+    "src/vendor.ts",
+    "src/polyfills.ts"
+  ],
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

@@ -1,0 +1,34 @@
+<md-toolbar class="fixed-toolbar
+            md-whitefame-z1"
+            md-peakaboo [break]="190"
+            breakAction="show">
+    <div class="md-toolbar-tools">
+        <span>FoodButton</span>
+    </div>
+</md-toolbar>
+<router-outlet></router-outlet>
+<md-content>
+    <div layout="row">
+        <button *ngIf="!loggedIn()"
+            (click)="login()"
+            md-raised-button
+            class="md-warn md-block">
+        Login w/ Facebook
+        </button>
+    </div>
+
+    <div layout="row">
+         <button *ngIf="loggedIn()"
+            (click)="setupCredit()"
+            md-raised-button
+            flex
+            class="md-warn">
+        Get Food Now
+    </button>
+    </div>
+
+
+</md-content>
+
+
+
