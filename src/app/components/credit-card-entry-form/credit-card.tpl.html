@@ -1,4 +1,5 @@
-<md-content flex layout-padding>
+<form (ngSubmit)="onSubmit()" #cardForm="ngForm">
+    <md-content flex layout-padding>
     <div class="inset">
         <div layout="row">
             <h3 class="md-title">
@@ -8,21 +9,32 @@
         <div layout="row">
             <md-input-container class="md-block" flex>
                 <label>Number</label>
-                <input name="number" [(ngModel)]="model.cardNumber" type="text" required />
+                <input name="number"
+                       [(ngModel)]="model.cardNumber"
+                       type="text"
+                       required />
             </md-input-container>
         </div>
         <div layout="row">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Expiration Month</label>
-                <input name="month" [(ngModel)]="model.cardExpMonth" type="text" required />
+                <input name="month"
+                       [(ngModel)]="model.cardExpMonth"
+                       type="text"
+                       required />
             </md-input-container>
             <md-input-container class="md-block " flex-gt-sm>
                 <label>Expiration Year</label>
-                <input name="year" [(ngModel)]="model.cardExpYear" type="text" required />
+                <input name="year"
+                       [(ngModel)]="model.cardExpYear"
+                       type="text"
+                       required />
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>CVC</label>
-                <input name="cvc" [(ngModel)]="model.cardExpMonth" type="text" required />
+                <input name="cvc"
+                       [(ngModel)]="model.cardCVC"
+                       type="text" required />
             </md-input-container>
         </div>
         <div layout="row">
@@ -63,4 +75,12 @@
             </md-input-container>
         </div>
     </div>
+    <div layout="row">
+        <button md-raised-button
+                class="md-primary"
+                [disabled]="!cardForm.form.valid"
+                type="submit">Submit
+        </button>
+    </div>
 </md-content>
+</form>

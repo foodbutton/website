@@ -6,21 +6,28 @@
         <span>FoodButton</span>
     </div>
 </md-toolbar>
+<router-outlet></router-outlet>
 <md-content>
-    <button *ngIf="!loggedIn()"
+    <div layout="row">
+        <button *ngIf="!loggedIn()"
             (click)="login()"
-            md-button
-            class="md-primary">
+            md-raised-button
+            class="md-warn md-block">
         Login w/ Facebook
-    </button>
+        </button>
+    </div>
 
-    <button *ngIf="loggedIn()"
+    <div layout="row">
+         <button *ngIf="loggedIn()"
             (click)="setupCredit()"
-            md-button
-            class="md-primary">
+            md-raised-button
+            flex
+            class="md-warn">
         Get Food Now
     </button>
-    <router-outlet></router-outlet>
+    </div>
+
+
 </md-content>
 
 

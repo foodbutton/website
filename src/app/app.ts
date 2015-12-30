@@ -6,17 +6,10 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/source/all';
-import {AuthHttp, tokenNotExpired, JwtHelper} from 'angular2-jwt';
-import {Home} from './components/home/home';
 import {CreditForm} from './components/credit-card-entry-form/credit-card';
 import {AddressForm} from './components/delivery-address-entry-form/address';
 import {Preferences} from './components/preferences/preferences';
 import {UserService} from './services/user';
-
-declare var Auth0;
-declare var Auth0Lock;
-declare var AWS;
-
 
 import './app.scss';
 
@@ -32,7 +25,6 @@ import './app.scss';
 })
 
 @RouteConfig([
-  {path:'/',                      name: 'Home',          component: Home},
   {path:'/credit-entry',          name: 'Credit',        component: CreditForm},
   {path:'/delivery-entry',        name: 'Address',       component: AddressForm},
   {path:'/preferences',           name: 'Preferences',   component: Preferences}
