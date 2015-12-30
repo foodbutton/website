@@ -11,7 +11,9 @@ import {Home} from './components/home/home';
 import {CreditForm} from './components/credit-card-entry-form/credit-card';
 import {AddressForm} from './components/delivery-address-entry-form/address';
 import {Preferences} from './components/preferences/preferences';
+import {UserService} from './services/user';
 
+declare var Auth0;
 declare var Auth0Lock;
 declare var AWS;
 
@@ -21,7 +23,7 @@ import './app.scss';
 
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS, MATERIAL_PROVIDERS],
+  providers: [ ...FORM_PROVIDERS, MATERIAL_PROVIDERS, UserService],
   directives: [ ...ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [],
@@ -39,93 +41,26 @@ import './app.scss';
 
 export class App {
 
-  lock = new Auth0Lock('iJFer7zN0TK9Hz1Bcgn9keMCPMSwDV8G', 'mixedmedia.auth0.com');
-  jwtHelper: JwtHelper = new JwtHelper();
+    constructor(
+        private _userService:UserService,
+        private _router:Router
+    ){}
 
-  constructor(public http: Http, public authHttp: AuthHttp) {}
+    login() {
+        return this._userService.login()
+    }
 
-  login() {
-    this.lock.show((err: string, profile: string, id_token: string) => {
+    setupCredit() {
+        this._router.navigate(['Credit'])
+    }
 
-      if (err) {
-        throw new Error(err);
-      }
+    logout(){
+        return this._userService.logout()
+    }
 
-      localStorage.setItem('profile', JSON.stringify(profile));
-      localStorage.setItem('id_token', id_token);
+    loggedIn() {
+        return this._userService.loggedIn()
+    }
 
-      AWS.config.region = 'us-east-1';
-      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: 'us-east-1:5171085d-4117-4d63-8701-eb06637a7281',
-          Logins: {
-              'graph.facebook.com': id_token
-          }
-      })
-
-      AWS.config.credentials.get(() => {
-          let syncClient = new AWS.CognitoSyncManager();
-
-          syncClient.openOrCreateDataset('userProfiles', (err, dataset) => {
-              dataset.put('profile', profile, (err, record) => {
-                  dataset.synchronize({
-                      onSuccess: (data, newRecords) => {
-                          console.log(
-                              data,
-                              newRecords
-                          )
-                      }
-                  })
-              })
-          })
-      })
-
-    });
-  }
-
-  logout() {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-  }
-
-  loggedIn() {
-    return tokenNotExpired();
-  }
-
-  getThing() {
-    this.http.get('http://localhost:3001/ping')
-      .subscribe(
-        data => console.log(data.json()),
-        err => console.log(err),
-        () => console.log('Complete')
-      );
-  }
-
-  getSecretThing() {
-    // this.authHttp.get('http://localhost:3001/secured/ping')
-    //   .subscribe(
-    //     data => console.log(data.json()),
-    //     err => console.log(err),
-    //     () => console.log('Complete')
-    //   );
-    console.log(AWS)
-  }
-
-  tokenSubscription() {
-    this.authHttp.tokenStream.subscribe(
-        data => console.log(data),
-        err => console.log(err),
-        () => console.log('Complete')
-      );
-  }
-
-  useJwtHelper() {
-    var token = localStorage.getItem('id_token');
-
-    console.log(
-      this.jwtHelper.decodeToken(token),
-      this.jwtHelper.getTokenExpirationDate(token),
-      this.jwtHelper.isTokenExpired(token)
-    );
-  }
 }
 

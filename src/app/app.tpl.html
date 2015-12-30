@@ -7,20 +7,21 @@
     </div>
 </md-toolbar>
 <md-content>
-    <h3 class="md-title">Login</h3>
-    <button md-button
-            *ngIf="!loggedIn()"
-            (click)="login()">
-      Login
+    <button *ngIf="!loggedIn()"
+            (click)="login()"
+            md-button
+            class="md-primary">
+        Login w/ Facebook
     </button>
-    <button md-button
-            *ngIf="loggedIn()"
-            (click)="logout()">
-      Logout
+
+    <button *ngIf="loggedIn()"
+            (click)="setupCredit()"
+            md-button
+            class="md-primary">
+        Get Food Now
     </button>
-    <button md-button
-            (click)="getSecretThing()">
-      Get Secret
-    </button>
+    <router-outlet></router-outlet>
 </md-content>
-<router-outlet></router-outlet>
+
+
+
