@@ -25,7 +25,8 @@ export class CreditForm {
    submitted = false;
 
    constructor(
-      @Inject(ElementRef) elementRef: ElementRef
+      @Inject(ElementRef) elementRef: ElementRef,
+      private _router:Router
    ){
        var el:any = elementRef.nativeElement;
    }
@@ -45,7 +46,10 @@ export class CreditForm {
             cvc: this.model.cardCVC,
             exp_month: parseInt(this.model.cardExpMonth),
             exp_year: parseInt(this.model.cardExpYear)
-        })
+        }, this._handler)
+
+        this._router.navigate(['Address'])
+    }
    }
 
 
