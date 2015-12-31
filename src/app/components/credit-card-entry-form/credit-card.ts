@@ -50,7 +50,4 @@ export class CreditForm {
 
         this._router.navigate(['Address'])
     }
-   }
-
-
 }
