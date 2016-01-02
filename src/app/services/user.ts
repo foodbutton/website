@@ -2,7 +2,6 @@ import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {AuthHttp, tokenNotExpired, JwtHelper} from 'angular2-jwt';
 
-declare var Auth0;
 declare var Auth0Lock;
 declare var AWS;
 
@@ -11,7 +10,7 @@ declare var AWS;
 export class UserService {
     lock = new Auth0Lock('iJFer7zN0TK9Hz1Bcgn9keMCPMSwDV8G', 'mixedmedia.auth0.com');
     jwtHelper: JwtHelper = new JwtHelper();
-
+    userInfo = {};
     constructor(public http: Http, public authHttp: AuthHttp) {}
 
     login() {
@@ -40,6 +39,7 @@ export class UserService {
 
                     dataset.put('profile', JSON.stringify(profile), function(err, record){
                         console.log(record)
+                        this.userInfo = record;
                     })
 
                     dataset.synchronize({
@@ -65,5 +65,10 @@ export class UserService {
 
     loggedIn() {
         return tokenNotExpired();
+    }
+
+    getUserInfo() {
+        this.userInfo = localStorage.getItem('profile')
+        console.log(this.userInfo)
     }
 };

@@ -5,7 +5,7 @@ import 'es7-reflect-metadata/dist/browser';
 import 'zone.js/lib/browser/zone-microtask';
 
 // in Production you may want to remove this
-import 'zone.js/lib/browser/long-stack-trace-zone';
+// import 'zone.js/lib/browser/long-stack-trace-zone';
 
 
 (<any>global).__extends = (this && this.__extends) || function (d?: any, b?: any) {

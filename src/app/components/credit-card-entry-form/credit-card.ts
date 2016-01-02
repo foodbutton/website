@@ -1,8 +1,8 @@
-import {Component, ElementRef, Inject} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
-import {MATERIAL_DIRECTIVES} from 'ng2-material/source/all';
+import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Credit} from './credit';
 
 declare var Stripe;
@@ -11,10 +11,7 @@ Stripe.setPublishableKey('pk_test_wUzLERCtFlMGQt8iL9Bj8DlB');
 @Component({
   selector: 'credit-entry-form',
   providers: [ ...FORM_PROVIDERS],
-  directives: [ ...ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES],
-  // We need to tell Angular's compiler which custom pipes are in our template.
-  pipes: [],
-  styles: [],
+  directives: [ ...MATERIAL_DIRECTIVES],
   template: require('./credit-card.tpl.html')
 })
 
@@ -25,10 +22,8 @@ export class CreditForm {
    submitted = false;
 
    constructor(
-      @Inject(ElementRef) elementRef: ElementRef,
       private _router:Router
    ){
-       var el:any = elementRef.nativeElement;
    }
 
    private _handler(status:string, response:any) {
@@ -47,7 +42,5 @@ export class CreditForm {
             exp_month: parseInt(this.model.cardExpMonth),
             exp_year: parseInt(this.model.cardExpYear)
         }, this._handler)
-
-        this._router.navigate(['Address'])
     }
 }

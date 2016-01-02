@@ -1,33 +1,47 @@
-<md-toolbar class="fixed-toolbar
-            md-whitefame-z1"
-            md-peakaboo [break]="190"
-            breakAction="show">
+<md-toolbar class="fixed-toolbar">
     <div class="md-toolbar-tools">
-        <span>FoodButton</span>
-    </div>
-</md-toolbar>
-<router-outlet></router-outlet>
-<md-content>
-    <div layout="row">
+        <h2>
+            <span>FoodButton</span>
+        </h2>
+        <span flex></span>
         <button *ngIf="!loggedIn()"
-            (click)="login()"
-            md-raised-button
-            class="md-warn md-block">
-        Login w/ Facebook
+                (click)="login()"
+                md-raised-button>
+           Login
+        </button>
+        <button *ngIf="loggedIn()"
+                (click)="logout()"
+                md-raised-button>
+           Logout
         </button>
     </div>
+</md-toolbar>
+<!--<nav *ngIf="loggedIn()" class="md-tabs">
+    <md-tabs-wrapper>
+        <md-tab-data></md-tab-data>
+        <md-tabs-canvas role="tablist">
+            <md-pagination-wrapper>
+                <md-tab-item [routerLink]="['Credit']">Credit</md-tab-item>
+                <md-tab-item [routerLink]="['Address']">Address</md-tab-item>
+                <md-tab-item [routerLink]="['Preferences']">Preferences</md-tab-item>
+             </md-pagination-wrapper>
+        </md-tabs-canvas>
+     </md-tabs-wrapper>
 
-    <div layout="row">
-         <button *ngIf="loggedIn()"
-            (click)="setupCredit()"
-            md-raised-button
-            class="md-warn">
-        Get Food Now
-    </button>
-    </div>
-
-
-</md-content>
-
-
-
+    <md-tabs-content-wrapper>
+        <md-tab-content>
+            <router-outlet></router-outlet>
+        </md-tab-content>
+    </md-tabs-content-wrapper>
+</nav>-->
+<md-tabs md-dynamic-height md-border-bottom>
+  <template md-tab label="step 1">
+    <preferences></preferences>
+  </template>
+  <template md-tab label="step 2">
+    <address-entry-form></address-entry-form>
+  </template>
+  <template md-tab label="step 3">
+    <credit-entry-form></credit-entry-form>
+  </template>
+</md-tabs>
