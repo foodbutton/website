@@ -20,19 +20,7 @@ import {UserService} from './services/user';
   template: require('./app.tpl.html')
 })
 
-@RouteConfig([
-  {path:'/credit-entry',          name: 'Credit',        component: CreditForm},
-  {path:'/delivery-entry',        name: 'Address',       component: AddressForm},
-  {path:'/preferences',           name: 'Preferences',   component: Preferences}
-])
-
-
 export class App {
-    tabs = [
-            'Credit',
-            'Address',
-            'Preferences'
-        ];
     constructor(
         public userService:UserService,
         private _router:Router
@@ -40,10 +28,6 @@ export class App {
 
     login() {
         return this.userService.login()
-    }
-
-    setupCredit() {
-        this._router.navigate(['Credit'])
     }
 
     logout(){
