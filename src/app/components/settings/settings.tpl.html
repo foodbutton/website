@@ -1,0 +1,18 @@
+<!--<md-tabs md-dynamic-height md-border-bottom *ngIf="loggedIn()">
+  <template md-tab label="step 1">
+    <preferences></preferences>
+  </template>
+  <template md-tab label="step 2">
+    <address-entry-form></address-entry-form>
+  </template>
+  <template md-tab label="step 3">
+    <credit-entry-form></credit-entry-form>
+  </template>
+</md-tabs>-->
+
+<div layout="row">
+    <a [routerLink]="['Preferences']"></a>
+    <a [routerLink]="['Address']"></a>
+    <a [routerLink]="['Payment']"></a>
+</div>
+<router-outlet></router-outlet>

@@ -1,3 +1,80 @@
 <md-content class="md-padding">
     <h3>Set Your Meal Preferences</h3>
+    <p>Selected value: <span class="radioValue">{{model.majorCategory}}</span></p>
+    <md-radio-group [(value)]="model.majorCategory">
+        <md-radio-button value="Omnivore" class="md-primary">
+            Omnivore
+        </md-radio-button>
+        <md-radio-button value="Vegetarian">
+            Vegetarian
+        </md-radio-button>
+        <md-radio-button value="Vegan" class="md-warn">
+            Vegan
+        </md-radio-button>
+    </md-radio-group>
+    <md-checkbox [(checked)]="model.bbq"
+               aria-label="BBQ"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        BBQ
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.japanese"
+               aria-label="Japanese"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Japanese
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.italian"
+               aria-label="Italian/Pizza"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Italian/Pizza
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.sandwich"
+               aria-label="Sandwich"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Sandwich Shop: {{model.sandwich}}
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.mexican"
+               aria-label="Mexican"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Mexican
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.indian"
+               aria-label="Indian"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Indian
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.mideast"
+               aria-label="Middle Eastern"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Middle Eastern
+    </md-checkbox>
+    <md-checkbox [(checked)]="model.vegetarian"
+               aria-label="Vegetarian"
+               ng-true-value="'Yes'"
+               ng-false-value="'No'">
+        Vegetarian
+    </md-checkbox>
+        <div layout="row">
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label for="allergies">Any allergies we should be aware of?</label>
+            <input id="allergies"
+                   [(ngModel)]="model.allergies"
+                   type="text" />
+        </md-input-container>
+
+        </div>
+        <div layout="row">
+            <button md-raised-button
+                (click)="savePrefs()"
+                class="md-warn">
+              Save
+            </button>
+        </div>
 </md-content>

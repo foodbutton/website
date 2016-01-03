@@ -1,9 +1,10 @@
-import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Component, OnInit} from 'angular2/core';
+import {Router, Location} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Credit} from './credit';
+import {UserService} from '../../services/user';
 
 declare var Stripe;
 Stripe.setPublishableKey('pk_test_wUzLERCtFlMGQt8iL9Bj8DlB');
@@ -17,12 +18,15 @@ Stripe.setPublishableKey('pk_test_wUzLERCtFlMGQt8iL9Bj8DlB');
 
 
 
-export class CreditForm {
+export class CreditForm implements OnInit {
    model = new Credit('', '', '', '');
+   userData:any;
    submitted = false;
 
    constructor(
-      private _router:Router
+      private _router:Router,
+      private _userService:UserService,
+      private _location:Location
    ){
    }
 
@@ -34,6 +38,23 @@ export class CreditForm {
            console.log(token)
        }
    }
+   ngOnInit(){
+       this.userData = JSON.parse(this._userService.getUserInfo())
+       console.log('On Step 3')
+       console.log('IdentityId: ' + this.userData.LastModifiedBy)
+    }
+
+    onBlur() {
+      console.log(this.model)
+    }
+
+    saveCard() {
+        localStorage.setItem('creditInfo', JSON.stringify(this.model))
+        console.log(this.model)
+        setTimeout(() => {
+            this._router.navigateByUrl('/order')
+        }, 200)
+    }
 
    onSubmit() {
         Stripe.card.createToken({

@@ -39,7 +39,7 @@ export class UserService {
 
                     dataset.put('profile', JSON.stringify(profile), function(err, record){
                         console.log(record)
-                        this.userInfo = record;
+                        localStorage.setItem('awsCred', JSON.stringify(record))
                     })
 
                     dataset.synchronize({
@@ -68,7 +68,6 @@ export class UserService {
     }
 
     getUserInfo() {
-        this.userInfo = localStorage.getItem('profile')
-        console.log(this.userInfo)
+        return this.userInfo = localStorage.getItem('awsCred')
     }
 };

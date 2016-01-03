@@ -9,27 +9,50 @@
     <div layout="row">
         <md-input-container class="md-block" flex>
             <label>Address 1</label>
-            <input name="address1" [(ngModel)]="model.address1" type="text" />
+            <input name="address1"
+                   [(ngModel)]="model.address1"
+                   (blur)="onBlur()"
+                   type="text" />
         </md-input-container>
     </div>
     <div layout="row">
         <md-input-container class="md-block" flex>
             <label>Address 2</label>
-            <input name="address2" [(ngModel)]="model.address2" type="text" />
+            <input name="address2"
+                   [(ngModel)]="model.address2"
+                   (blur)="onBlur()"
+                   type="text" />
         </md-input-container>
     </div>
     <div layout="row">
         <md-input-container class="md-block" flex>
             <label>City</label>
-            <input name="city" [(ngModel)]="model.city" type="text" />
+            <input name="city"
+                   [(ngModel)]="model.city"
+                   (blur)="onBlur()"
+                   type="text" />
         </md-input-container>
         <md-input-container class="md-block" flex>
             <label>State</label>
-            <input name="state" [(ngModel)]="model.state" type="text" />
+            <input name="state"
+                   [(ngModel)]="model.state"
+                   (blur)="onBlur()"
+                   type="text" />
         </md-input-container>
         <md-input-container class="md-block" flex>
             <label>Zip</label>
-            <input name="zip" [(ngModel)]="model.zip" type="text" />
+            <input name="zip"
+                   [(ngModel)]="model.zip"
+                   (blur)="onBlur()"
+                   type="text" />
         </md-input-container>
-    </div>
+        </div>
+        <div layout="row">
+            <button md-raised-button
+                (click)="saveAddress()"
+                class="md-warn">
+              Save
+            </button>
+        </div>
+
 </md-content>
