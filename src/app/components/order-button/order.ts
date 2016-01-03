@@ -12,7 +12,7 @@ import {Order} from './order-model';
 
 @Component({
   selector: 'order-button',
-  providers: [ ...FORM_PROVIDERS, MATERIAL_PROVIDERS, OrderService],
+  providers: [ ...FORM_PROVIDERS, MATERIAL_PROVIDERS, OrderService, UserService],
   directives: [ ...ROUTER_DIRECTIVES, CORE_DIRECTIVES, MATERIAL_DIRECTIVES],
   // We need to tell Angular's compiler which custom pipes are in our template.
   template: require('./order-button.tpl.html')
@@ -23,7 +23,8 @@ export class OrderButton implements OnInit{
    userData:any;
 
    constructor(
-      private _userService:UserService
+      private _userService:UserService,
+      private _orderService:OrderService
    ){
    }
 
@@ -33,17 +34,14 @@ export class OrderButton implements OnInit{
            this.userData.LastModifiedBy,
            JSON.parse(localStorage.getItem('address')),
            JSON.parse(localStorage.getItem('myPrefs')),
-           JSON.parse(localStorage.getItem('creditInfo'))
+           JSON.parse(localStorage.getItem('stripeData'))
        )
    }
 
    orderNow() {
 
        setTimeout(() => {
-           console.log('IdentityId', this.model.identityId);
-           console.log('Address', this.model.deliveryAddress);
-           console.log('Preferences', this.model.preferences);
-           console.log('Card Data', this.model.stripeData);
+          this._orderService.syncOrderInfo(this.model)
        }, 300)
 
    }

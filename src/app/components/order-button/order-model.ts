@@ -3,6 +3,6 @@ export class Order {
         public identityId: string,
         public deliveryAddress: any,
         public preferences: any,
-        public stripeData: any
+        public stripeData: string
     ) {}
 }

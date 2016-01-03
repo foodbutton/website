@@ -35,6 +35,7 @@ export class CreditForm implements OnInit {
            console.log(response.error.message)
        } else {
            let token = response.id;
+           localStorage.setItem('stripeData', JSON.stringify(token))
            console.log(token)
        }
    }
@@ -48,20 +49,17 @@ export class CreditForm implements OnInit {
     }
 
     saveCard() {
-        localStorage.setItem('creditInfo', JSON.stringify(this.model))
-        console.log(this.model)
-        setTimeout(() => {
-           this._location.go('/order')
-           this._router.navigateByUrl('/order', true)
-        }, 200)
-    }
 
-   onSubmit() {
-        Stripe.card.createToken({
+        console.log(this.model)
+         Stripe.card.createToken({
             number: this.model.cardNumber,
             cvc: this.model.cardCVC,
             exp_month: parseInt(this.model.cardExpMonth),
             exp_year: parseInt(this.model.cardExpYear)
         }, this._handler)
+        setTimeout(() => {
+           this._location.go('/order')
+           this._router.navigateByUrl('/order', true)
+        }, 200)
     }
 }
