@@ -1,5 +1,5 @@
 # foodbutton.io
-The example application Serverless A
+This example application demonstrates Serverless AWS Architecture
 
 Frontend Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack demo](https://github.com/angular-tips/webpack-demo).
 
@@ -25,7 +25,7 @@ Warning: Make sure you're using the latest version of Node.js and NPM
 git clone https://github.com/foodbutton/website.git
 
 # change directory to our repo
-cd ng2-webpack
+cd website
 
 # install the repo with npm
 npm install
