@@ -41,7 +41,6 @@ export class CreditForm implements OnInit {
    ngOnInit(){
        this.userData = JSON.parse(this._userService.getUserInfo())
        console.log('On Step 3')
-       console.log('IdentityId: ' + this.userData.LastModifiedBy)
     }
 
     onBlur() {
@@ -52,7 +51,8 @@ export class CreditForm implements OnInit {
         localStorage.setItem('creditInfo', JSON.stringify(this.model))
         console.log(this.model)
         setTimeout(() => {
-            this._router.navigateByUrl('/order')
+           this._location.go('/order')
+           this._router.navigateByUrl('/order', true)
         }, 200)
     }
 
