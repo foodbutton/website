@@ -3,7 +3,7 @@ import {Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Address} from './address-model'
-import {UserService} from '../../services/user';
+import {UserService} from '../../../services/user';
 
 
 @Component({

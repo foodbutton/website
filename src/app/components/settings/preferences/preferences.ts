@@ -2,7 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all'
-import {UserService} from '../../services/user';
+import {UserService} from '../../../services/user';
 import {Prefs} from './prefs-model'
 
 @Component({

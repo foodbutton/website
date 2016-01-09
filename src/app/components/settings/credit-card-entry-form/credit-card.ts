@@ -4,7 +4,7 @@ import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {Credit} from './credit';
-import {UserService} from '../../services/user';
+import {UserService} from '../../../services/user';
 
 declare var Stripe;
 Stripe.setPublishableKey('pk_test_wUzLERCtFlMGQt8iL9Bj8DlB');
