@@ -19,7 +19,7 @@ export class OrderService {
 
               dataset.synchronize({
                   onSuccess: (data, newRecords) => {
-                      console.log('Successful sync', newRecords)
+                      console.log('Successful sync', data)
                   }
               })
           })

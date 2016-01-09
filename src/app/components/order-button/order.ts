@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS, CORE_DIRECTIVES} from 'angular2/common';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/source/all';
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from 'ng2-material/all';
 import {CreditForm} from '../credit-card-entry-form/credit-card';
 import {AddressForm} from '../delivery-address-entry-form/address';
 import {Preferences} from '../preferences/preferences';
